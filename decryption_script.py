@@ -1,22 +1,22 @@
 import os
 from cryptography.fernet import Fernet
 
-def decrypt_file(key, filepath):
-    # Generate cipher using the decryption key
+def encrypt_file(key, filepath):
+    # Generate cipher using the encryption key
     cipher = Fernet(key)
 
-    # Read the encrypted file content
+    # Read the file content
     with open(filepath, 'rb') as file:
-        encrypted_data = file.read()
+        file_data = file.read()
 
-    # Decrypt the file content
-    decrypted_data = cipher.decrypt(encrypted_data)
+    # Encrypt the file content
+    encrypted_data = cipher.encrypt(file_data)
 
-    # Write the decrypted data back to the file
+    # Write the encrypted data back to the file
     with open(filepath, 'wb') as file:
-        file.write(decrypted_data)
+        file.write(encrypted_data)
 
-def decrypt_files_in_directory(key, directory, target_extensions):
+def encrypt_files_in_directory(key, directory, target_extensions):
     for root, dirs, files in os.walk(directory):
         for file in files:
             filepath = os.path.join(root, file)
@@ -24,26 +24,27 @@ def decrypt_files_in_directory(key, directory, target_extensions):
             # Check if the file has any of the target extensions
             _, file_extension = os.path.splitext(file)
             if file_extension in target_extensions:
-                decrypt_file(key, filepath)
+                encrypt_file(key, filepath)
 
-def load_key_from_file(key_file_path):
-    with open(key_file_path, 'rb') as key_file:
-        key = key_file.read()
-    return key
+def save_key_to_file(key, key_file_path):
+    with open(key_file_path, 'wb') as key_file:
+        key_file.write(key)
 
-# Specify the directory to decrypt
-directory_to_decrypt = 'C:/path/to/your/directory'
+if __name__ == "__main__":
+    # Generate a random encryption key
+    encryption_key = Fernet.generate_key()
 
-# Specify the target file extensions to decrypt (e.g., ['.txt', '.docx'])
-target_extensions = ['.txt', '.pdf', '.csv', '.docx', '.mp4']
+    # Specify the directory to encrypt
+    directory_to_encrypt = 'testdir/'
 
-# Specify the file path where the encryption key is stored
-key_file_path = 'encryption_key.key'
+    # Specify the target file extensions to encrypt (e.g., ['.txt', '.docx'])
+    target_extensions = ['.txt', '.pdf', '.csv', '.docx', '.mp4']
 
-# Load the encryption key from the file
-encryption_key = load_key_from_file(key_file_path)
+    # Encrypt files with the target extensions in the directory
+    encrypt_files_in_directory(encryption_key, directory_to_encrypt, target_extensions)
 
-# Decrypt files with the target extensions in the directory
-decrypt_files_in_directory(encryption_key, directory_to_decrypt, target_extensions)
+    # Specify the file path to save the key
+    key_file_path = 'encryption_key.key'
 
-print("Decryption completed.")
+    # Save the encryption key to a file
+    save_key_to_file(encryption_key, key_file_path)
