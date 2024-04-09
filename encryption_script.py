@@ -30,20 +30,21 @@ def save_key_to_file(key, key_file_path):
     with open(key_file_path, 'wb') as key_file:
         key_file.write(key)
 
-# Generate a random encryption key
-encryption_key = Fernet.generate_key()
+if __name__ == "__main__":
+    # Generate a random encryption key
+    encryption_key = Fernet.generate_key()
 
-# Specify the directory to encrypt
-directory_to_encrypt = 'C:/path/to/your/directory'
+    # Specify the directory to encrypt
+    directory_to_encrypt = 'testdir/'
 
-# Specify the target file extensions to encrypt (e.g., ['.txt', '.docx'])
-target_extensions = ['.txt', '.pdf', '.csv', '.docx', '.mp4']
+    # Specify the target file extensions to encrypt (e.g., ['.txt', '.docx'])
+    target_extensions = ['.txt', '.pdf', '.csv', '.docx', '.mp4']
 
-# Encrypt files with the target extensions in the directory
-encrypt_files_in_directory(encryption_key, directory_to_encrypt, target_extensions)
+    # Encrypt files with the target extensions in the directory
+    encrypt_files_in_directory(encryption_key, directory_to_encrypt, target_extensions)
 
-# Specify the file path to save the key
-key_file_path = 'encryption_key.key'
+    # Specify the file path to save the key
+    key_file_path = 'encryption_key.key'
 
-# Save the encryption key to a file
-save_key_to_file(encryption_key, key_file_path)
+    # Save the encryption key to a file
+    save_key_to_file(encryption_key, key_file_path)
