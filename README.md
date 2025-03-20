@@ -52,4 +52,4 @@ Contributions are welcome! Please follow these steps:
 
 
 ## Support
-If you encounter any issues or have questions, please open an issue on the GitHub repository.
+If you encounter any issues or have questions, please open an issue on the [GitHub repository](https://github.com/gerryaudityaa/LockPy).
