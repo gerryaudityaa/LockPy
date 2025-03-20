@@ -45,10 +45,10 @@ LockPy is a secure file encryption tool built with Python and PyQt5. It allows u
 
 ## Contributing
 Contributions are welcome! Please follow these steps:
-1. Fork the repository.
-2. Create a new branch for your feature or bugfix.
-3. Commit your changes.
-4. Submit a pull request.
+- Fork the repository.
+- Create a new branch for your feature or bugfix.
+- Commit your changes.
+- Submit a pull request.
 
 
 ## Support
