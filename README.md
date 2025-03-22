@@ -22,7 +22,7 @@ LockPy is a secure file encryption tool built with Python and PyQt5. It allows u
 1. Clone the repository:
    
    ```bash
-   git clone https://github.com/yourusername/LockPy.git
+   git clone https://github.com/gerryaudityaa/LockPy.git
    cd LockPy
    
 2. Install the required dependencies:
