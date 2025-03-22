@@ -8,7 +8,6 @@ LockPy is a secure file encryption tool built with Python and PyQt5. It allows u
 - **Save and Load Keys**: Save encryption keys to a file and load them for future use.
 - **Encrypt Files**: Securely encrypt files using the generated key.
 - **Decrypt Files**: Decrypt files using the corresponding encryption key.
-- **Multi-Threading**: Encrypt and decrypt files in the background without freezing the GUI.
 - **Logging**: Detailed logging for debugging and tracking operations.
 
 ## Installation
